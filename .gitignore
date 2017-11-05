@@ -1,0 +1,10 @@
+bin
+obj
+packages
+test_results
+dist
+
+.vs
+.vscode
+
+*.user
