@@ -2,6 +2,11 @@
 
 A small library of utility extensions I've used in commercial and OSS projects.
 
+[![AppVeyor](https://img.shields.io/appveyor/ci/tlycken/tlycken-extensions.svg?style=flat-square)](https://ci.appveyor.com/project/tlycken/tlycken-extensions)
+[![AppVeyor tests](https://img.shields.io/appveyor/tests/tlycken/tlycken-extensions.svg?style=flat-square)](https://ci.appveyor.com/project/tlycken/tlycken-extensions)
+[![NuGet](https://img.shields.io/nuget/v/tlycken.Extensions.svg?style=flat-square)](https://www.nuget.org/packages/tlycken.extensions)
+[![NuGet](https://img.shields.io/nuget/dt/tlycken.Extensions.svg?style=flat-square)](http://nuget.org/packages/tlycken.extensions)
+
 # Extensions on `Task<IEnumerable<T>>`
 
 I've always found it inconvenient to first have to `await` a `Task<IEnumerable<T>>`
