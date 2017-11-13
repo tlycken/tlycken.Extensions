@@ -1,8 +1,12 @@
+param(
+	$configuration = 'Release'
+)
+
 $testExitCode = 0
 
 Get-ChildItem src\*.Tests `
 | % {
-	dotnet test "src\\$($_.Name)" -c Release --no-build --logger trx --results-directory (Join-Path $(pwd) test_results)
+	dotnet test "src\\$($_.Name)" -c $configuration --no-build --logger trx --results-directory (Join-Path $(pwd) test_results)
 	$global:testExitCode += $LASTEXITCODE
 }
 if ($testExitCode -ne 0) { $host.SetShouldExit($testExitCode); throw; }
