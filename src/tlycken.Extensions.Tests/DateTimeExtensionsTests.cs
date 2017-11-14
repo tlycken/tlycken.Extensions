@@ -23,7 +23,7 @@ namespace tlycken.Extensions.Tests
         {
             var dateTime = DateTime.Parse(date);
 
-            var monthName = dateTime.MonthName(CultureInfo.InvariantCulture);
+            var monthName = dateTime.MonthName();
 
             Assert.Equal(expected, monthName);
         }
