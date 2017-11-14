@@ -8,6 +8,18 @@ A small library of utility extensions I've used in commercial and OSS projects.
 [![NuGet](https://img.shields.io/nuget/v/tlycken.Extensions.svg?style=flat-square)](https://www.nuget.org/packages/tlycken.extensions)
 [![NuGet](https://img.shields.io/nuget/dt/tlycken.Extensions.svg?style=flat-square)](http://nuget.org/packages/tlycken.extensions)
 
+## Extensions on `string`
+
+* `"a sample string".ToTitleCase()` -> `"A Sample String"`.
+
+* `"iota ıota".ToTitleCase(new CultureInfo("tr-TR"))` -> `"İota Iota"`.
+
+## Extensions on `DateTime`
+
+* `new DateTime(2017, 03, 13).MonthName()` -> `"March"`
+
+* `new DateTime(2017, 11, 13).MonthName(new CultureInfo("sv-SE"))` -> `"mars"`.
+
 ## Extensions on `Task<IEnumerable<T>>`
 
 I've always found it inconvenient to first have to `await` a `Task<IEnumerable<T>>`
