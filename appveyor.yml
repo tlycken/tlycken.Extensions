@@ -19,10 +19,12 @@ install:
       Update-AppveyorBuild -Version $version.Build
       $env:PACKAGE_VERSION = $version.Package
 before_build:
+  - choco install opencover.portable
+  - choco install codecov
   - dotnet --version
   - dotnet restore src --verbosity m
 build_script:
-  - dotnet build src --configuration Release
+  - dotnet build src --configuration Release  /p:DebugType=full
   - dotnet pack src --configuration Release --no-build
 test_script:
   - ps: ./run-tests.ps1
