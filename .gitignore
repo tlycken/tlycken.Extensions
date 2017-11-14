@@ -2,9 +2,12 @@ bin
 obj
 packages
 test_results
+TestResults
 dist
 
 .vs
 .vscode
 
 *.user
+coverage.xml
+results.xml
