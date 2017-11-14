@@ -35,7 +35,7 @@ Get-ChildItem src\*.Tests `
 
   $OpenCoverCmd = "$OpenCover -oldstyle -register:user"
   $OpenCoverCmd += " -target:`"$dotnet`" -targetargs:`""
-  $OpenCoverCmd += "test src\\$test --no-build"
+  $OpenCoverCmd += "test src\\$test --no-build --configuration $configuration"
   $OpenCoverCmd += " --logger trx;LogFileName=$test.trx --results-directory $test_results"
   $OpenCoverCmd += "`""
   $OpenCoverCmd += " -output:`"$coverage`""
