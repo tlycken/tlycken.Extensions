@@ -3,7 +3,7 @@ param(
   [string]$configuration = 'Release',
 
   [string]$buildFolder = $env:APPVEYOR_BUILD_FOLDER,
-  [string]$CodeCovToken = ''
+  [string]$CodeCovToken = $null
 )
 
 if ($buildFolder -eq $null) {
@@ -66,7 +66,7 @@ function Upload-CoverageReport {
   param($coverage, $codecov)
 
   $CodeCovCmd = "$codecov -f $($coverage.FullName)"
-  if ("$global:CodeCovToken" -ne '') {
+  if ($global:CodeCovToken -ne $null) {
     $CodeCovCmd += " -t $global:CodeCovToken"
   }
   Write-Host $CodeCovCmd
@@ -80,6 +80,9 @@ if ($env:APPVEYOR -eq 'True') {
   Write-Host "Not in Appveyor (`$env:APPVEYOR not -eq 'True'); skipping test results upload"
 }
 
-Get-ChildItem $test_results *.xml | % { Upload-CoverageReport -coverage $_ -codecov $codecov }
-
+if ($env:APPVEYOR -eq 'True' -or $CodeCovToken -ne '') {
+  Get-ChildItem $test_results *.xml | % { Upload-CoverageReport -coverage $_ -codecov $codecov }
+} else {
+  Write-Host "Not in Appveyor (`$env:APPVEYOR not -eq 'True') and no -CodeCovToken given; skipping coverage report upload"
+}
 if ($uploadExitCode -ne 0) { $host.SetShouldExit($uploadExitCode); throw; }
