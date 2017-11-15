@@ -35,5 +35,15 @@ namespace tlycken.Extensions.Tests
 
             Assert.Equal(expected, output);
         }
+
+        [Fact]
+        public void CamelCaseWithDefaultCulture(){
+            var input = "This is not a camel";
+            var expected = "thisIsACamel";
+
+            var output = input.ToCamelCase();
+
+            Assert.Equal(expected, output.Replace("Not", ""));
+        }
     }
 }
