@@ -52,5 +52,19 @@ namespace tlycken.Extensions.Tests
                 i => Assert.Equal(3, i),
                 i => Assert.Equal(4, i));
         }
+
+        [Fact]
+        public async Task CanAwaitListAsReadOnlyCollection()
+        {
+            var task = Task.FromResult(new List<int> { 1, 2, 3, 4 });
+            Task<IReadOnlyCollection<int>> GetResults() => task.ToReadOnlyCollection();
+
+            var result = await GetResults();
+            Assert.Collection(result,
+                i => Assert.Equal(1, i),
+                i => Assert.Equal(2, i),
+                i => Assert.Equal(3, i),
+                i => Assert.Equal(4, i));
+        }
     }
 }
