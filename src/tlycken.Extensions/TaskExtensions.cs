@@ -19,6 +19,9 @@ namespace System.Threading.Tasks
         public static Task<IReadOnlyCollection<T>> ToReadOnlyCollection<T>(this Task<IEnumerable<T>> task)
             => task.ContinueWith(t => t.Result.ToList() as IReadOnlyCollection<T>);
 
+        public static Task<IReadOnlyCollection<T>> ToReadOnlyCollection<T>(this Task<List<T>> task)
+            => task.ContinueWith(t => t.Result as IReadOnlyCollection<T>);
+
         /// <summary>
         /// Appends a continuation to the task, which calls .AsEnumerable on the resulting <see cref="List{T}"/>.
         /// </summary>
