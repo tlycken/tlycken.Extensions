@@ -20,6 +20,11 @@ A small library of utility extensions I've used in commercial and OSS projects.
 
 * `new DateTime(2017, 11, 13).MonthName(new CultureInfo("sv-SE"))` -> `"mars"`.
 
+## Extensions on `IEnumerable<T>`
+
+* `Enumerable.Range(0,5).Concat(Enumerable.Range(1,2)).Select(i => new Foo { Bar = i }).Distinct(foo => foo.Bar)`
+  -> elements with unique `Bar` values
+
 ## Extensions on `Task<IEnumerable<T>>`
 
 I've always found it inconvenient to first have to `await` a `Task<IEnumerable<T>>`
