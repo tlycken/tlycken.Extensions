@@ -25,6 +25,10 @@ A small library of utility extensions I've used in commercial and OSS projects.
 * `Enumerable.Range(0,5).Concat(Enumerable.Range(1,2)).Select(i => new Foo { Bar = i }).Distinct(foo => foo.Bar)`
   -> elements with unique `Bar` values
 
+* `Enumerable.Range(0,5).Select(i => i + 3).Indexed().ToArray()` -> `[(3,0), (4,1), (5,2), (6,3), (7,4)]`,
+  i.e. for each element it returns a tuple with the value in the first position
+  and the index in the second position.
+
 ## Extensions on `Task<IEnumerable<T>>`
 
 I've always found it inconvenient to first have to `await` a `Task<IEnumerable<T>>`

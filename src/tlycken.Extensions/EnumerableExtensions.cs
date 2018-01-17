@@ -12,5 +12,7 @@ namespace System.Linq
         /// <returns>A sequence of elements for which <paramref name="keySelector"/>(item) is unique</returns>
         public static IEnumerable<T> Distinct<T, TKey>(this IEnumerable<T> source, Func<T, TKey> keySelector)
             => source.GroupBy(keySelector).Select(group => group.First());
+
+        public static IEnumerable<(T,int)> Indexed<T>(this IEnumerable<T> source) => source.Select((x,i) => (value: x, index: i));
     }
 }
