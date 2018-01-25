@@ -27,5 +27,18 @@ namespace System.Linq
                 yield return item;
             }
         }
+
+        public static IEnumerable<T> SkipUpTo<T>(this IEnumerable<T> source, int max)
+        {
+            int current = 0;
+            foreach (var item in source)
+            {
+                if (current++ < max)
+                {
+                    continue;
+                }
+                yield return item;
+            }
+        }
     }
 }
