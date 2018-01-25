@@ -18,7 +18,7 @@ namespace System.Linq
         /// </summary>
         /// <param name="source">The source sequence of elements</param>
         /// <returns>A sequence of elements of type <code>(T, int)</code>. The first item is the value, and the second is the index.</returns>
-        public static IEnumerable<(T, int)> Indexed<T>(this IEnumerable<T> source) => source.Select((x, i) => (value: x, index: i));
+        public static IEnumerable<(T value, int index)> Indexed<T>(this IEnumerable<T> source) => source.Select((x, i) => (value: x, index: i));
 
         /// <summary>
         /// Same as <code>Take()</code>, but does not throw if the sequence is shorter.
