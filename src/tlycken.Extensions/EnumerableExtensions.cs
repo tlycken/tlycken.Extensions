@@ -14,5 +14,18 @@ namespace System.Linq
             => source.GroupBy(keySelector).Select(group => group.First());
 
         public static IEnumerable<(T, int)> Indexed<T>(this IEnumerable<T> source) => source.Select((x, i) => (value: x, index: i));
+
+        public static IEnumerable<T> TakeUpTo<T>(this IEnumerable<T> source, int max)
+        {
+            int current = 0;
+            foreach (var item in source)
+            {
+                if (current++ == max)
+                {
+                    yield break;
+                }
+                yield return item;
+            }
+        }
     }
 }
