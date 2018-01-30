@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
     <Version>0.0.0</Version>
     <PackageVersion>0.0.0</PackageVersion>
 
@@ -17,4 +16,7 @@
     <IncludeSource>True</IncludeSource>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.ValueTuple" Version="4.4.0" Condition="'$(TargetFramework)' == 'net461'" />
+  </ItemGroup>
 </Project>
