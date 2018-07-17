@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -54,6 +55,13 @@ namespace tlycken.Extensions.Tests
         {
             Assert.Equal("qux", _strings.GetOrDefault("baz", "qux"));
             Assert.Equal(12, _ints.GetOrDefault(7, 12));
+        }
+
+        [Fact]
+        public void NullKeyThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => _strings.GetOrDefault(null));
+            Assert.Throws<ArgumentNullException>(() => _strings.GetOrDefault(null, "baz"));
         }
     }
 }
