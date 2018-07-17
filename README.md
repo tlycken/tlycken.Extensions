@@ -29,6 +29,11 @@ A small library of utility extensions I've used in commercial and OSS projects.
   i.e. for each element it returns a tuple with the value in the first position
   and the index in the second position.
 
+## Extensions on `IDictionary<TKey, TValue>`
+
+* `new Dictionary<int, string>{ { 17, "foo", }, { 42, "bar" } }.GetOrDefault(31)` => `null` (actually, `default(string)`)
+* `new Dictionary<int, string>{ { 17, "foo", }, { 42, "bar" } }.GetOrDefault(31, "baz")` => `"bar"`
+
 ## Extensions on `Task<IEnumerable<T>>`
 
 I've always found it inconvenient to first have to `await` a `Task<IEnumerable<T>>`
